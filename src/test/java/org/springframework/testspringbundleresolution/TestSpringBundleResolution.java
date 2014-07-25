@@ -20,6 +20,7 @@ import static org.ops4j.pax.exam.CoreOptions.options;
 import static org.ops4j.pax.exam.CoreOptions.provision;
 
 import javax.inject.Inject;
+
 import org.ops4j.pax.exam.junit.PaxExam;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,11 +32,11 @@ import org.osgi.framework.BundleContext;
 @RunWith(PaxExam.class)
 public class TestSpringBundleResolution {
 
-    private static final String SPRINGFRAMEWORK_MILESTONE_MAVEN_URL = "http://maven.springframework.org/milestone";
+    private static final String SPRINGFRAMEWORK_RELEASE_MAVEN_URL = "http://repository.springsource.com/maven/bundles/release";
 
     private static final String EBR_EXTERNAL_MAVEN_URL = "http://repository.springsource.com/maven/bundles/external";
 
-    private static final String SPRING_VERSION = "3.1.0.RC2";
+    private static final String SPRING_VERSION = "3.1.4.RELEASE";
 
     @Inject
     private BundleContext bundleContext;
@@ -43,23 +44,23 @@ public class TestSpringBundleResolution {
     @Configuration
     public static Option[] configuration() throws Exception {
         return options(//
-            provisionSpringBundle("spring-core"), //
-            provisionSpringBundle("spring-beans"), //
-            provisionSpringBundle("spring-aop"), //
-            provisionSpringBundle("spring-asm"), //
-            provisionSpringBundle("spring-aspects"), //
-            provisionSpringBundle("spring-context"), //
-            provisionSpringBundle("spring-context-support"), //
-            provisionSpringBundle("spring-expression"), //
-            provisionSpringBundle("spring-jdbc"), //
-            provisionSpringBundle("spring-jms"), //
-            provisionSpringBundle("spring-orm"), //
-            provisionSpringBundle("spring-oxm"), //
-            provisionSpringBundle("spring-tx"), //
-            provisionSpringBundle("spring-web"), //
-            provisionSpringBundle("spring-webmvc"), //
-            provisionSpringBundle("spring-webmvc-portlet"), //
-
+            provisionSpringBundle("org.springframework.core"), //
+            provisionSpringBundle("org.springframework.beans"), //
+            provisionSpringBundle("org.springframework.aop"), //
+            provisionSpringBundle("org.springframework.asm"), //
+            provisionSpringBundle("org.springframework.aspects"), //
+            provisionSpringBundle("org.springframework.context"), //
+            provisionSpringBundle("org.springframework.context.support"), //
+            provisionSpringBundle("org.springframework.expression"), //
+            provisionSpringBundle("org.springframework.jdbc"), //
+            provisionSpringBundle("org.springframework.jms"), //
+            provisionSpringBundle("org.springframework.orm"), //
+            provisionSpringBundle("org.springframework.oxm"), //
+            provisionSpringBundle("org.springframework.transaction"), //
+            provisionSpringBundle("org.springframework.web"), //
+            provisionSpringBundle("org.springframework.web.servlet"), //
+            provisionSpringBundle("org.springframework.web.portlet"), //
+            
             // mandatory dependencies common to multiple Spring bundles
             provisionExternalBundle("org.apache.commons", "com.springsource.org.apache.commons.logging", "1.1.1"), //
             
@@ -94,7 +95,7 @@ public class TestSpringBundleResolution {
     private static String springBundleUrl(String artifactId) {
         String version = SPRING_VERSION;
         String groupId = "org.springframework";
-        String repositoryUrl = SPRINGFRAMEWORK_MILESTONE_MAVEN_URL;
+        String repositoryUrl = SPRINGFRAMEWORK_RELEASE_MAVEN_URL;
         return plainMavenUrl(repositoryUrl, groupId, artifactId, version);
     }
     
