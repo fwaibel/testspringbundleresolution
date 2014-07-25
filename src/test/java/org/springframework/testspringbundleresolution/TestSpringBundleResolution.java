@@ -20,16 +20,15 @@ import static org.ops4j.pax.exam.CoreOptions.options;
 import static org.ops4j.pax.exam.CoreOptions.provision;
 
 import javax.inject.Inject;
-
+import org.ops4j.pax.exam.junit.PaxExam;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Option;
-import org.ops4j.pax.exam.junit.Configuration;
-import org.ops4j.pax.exam.junit.JUnit4TestRunner;
+import org.ops4j.pax.exam.Configuration;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
-@RunWith(JUnit4TestRunner.class)
+@RunWith(PaxExam.class)
 public class TestSpringBundleResolution {
 
     private static final String SPRINGFRAMEWORK_MILESTONE_MAVEN_URL = "http://maven.springframework.org/milestone";
