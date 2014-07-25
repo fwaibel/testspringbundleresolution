@@ -36,7 +36,7 @@ public class TestSpringBundleResolution {
 
     private static final String EBR_EXTERNAL_MAVEN_URL = "http://repository.springsource.com/maven/bundles/external";
 
-    private static final String SPRING_VERSION = "3.1.4.RELEASE";
+    private static final String SPRING_VERSION = "3.2.4.RELEASE";
 
     @Inject
     private BundleContext bundleContext;
@@ -47,7 +47,6 @@ public class TestSpringBundleResolution {
             provisionSpringBundle("org.springframework.core"), //
             provisionSpringBundle("org.springframework.beans"), //
             provisionSpringBundle("org.springframework.aop"), //
-            provisionSpringBundle("org.springframework.asm"), //
             provisionSpringBundle("org.springframework.aspects"), //
             provisionSpringBundle("org.springframework.context"), //
             provisionSpringBundle("org.springframework.context.support"), //
@@ -114,6 +113,6 @@ public class TestSpringBundleResolution {
                 assertEquals(symbolicName + " is not ACTIVE", Bundle.ACTIVE, bundle.getState());
             }
         }
-        assertEquals("Unexpected number of Spring bundles found", 16, found);
+        assertEquals("Unexpected number of Spring bundles found", 15, found);
     }
 }
