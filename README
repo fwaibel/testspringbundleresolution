@@ -23,6 +23,10 @@ You should generate your own:
 
 gradle eclipse
 
+Nowadays you can use the Eclipse Gradle Plugin:
+
+Import... Gradle -> Gradle project.
+
 License
 =======
 
