@@ -32,16 +32,14 @@ import org.osgi.framework.BundleContext;
 @RunWith(PaxExam.class)
 public class TestSpringBundleResolution {
 
-    // private static final String SPRINGFRAMEWORK_MAVEN_URL =
-    // "http://repository.springsource.com/maven/bundles/release";
     private static final String SPRINGFRAMEWORK_MAVEN_URL = "file:" + System.getProperty("user.home") + "/.m2/repository/";
 
     private static final String SPRINGFRAMEWORK_GROUP_ID = "MY_EBR_BUNDLES_GROUP";
 
+    // TODO change to spring.io / pivotal.io
     private static final String EBR_EXTERNAL_MAVEN_URL = "http://repository.springsource.com/maven/bundles/external";
 
-    // private static final String SPRINGFRAMEWORK_VERSION = "3.2.4.RELEASE";
-    private static final String SPRINGFRAMEWORK_VERSION = "4.2.0-SNAPSHOT";
+    private static final String SPRINGFRAMEWORK_VERSION = "4.2.0.RELEASE";
 
     @Inject
     private BundleContext bundleContext;
@@ -113,6 +111,7 @@ public class TestSpringBundleResolution {
         for (Bundle bundle : bundles) {
             String symbolicName = bundle.getSymbolicName();
             if (symbolicName.startsWith("org.springframework")) {
+                System.out.println("Found Spring bundle '" + bundle.getSymbolicName() + "' with version: '" + bundle.getVersion() + "'.");
                 found++;
                 assertEquals(symbolicName + " is not ACTIVE", Bundle.ACTIVE, bundle.getState());
             }
