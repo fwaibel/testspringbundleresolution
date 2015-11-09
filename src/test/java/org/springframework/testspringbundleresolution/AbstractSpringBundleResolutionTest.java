@@ -38,22 +38,10 @@ public abstract class AbstractSpringBundleResolutionTest {
 
     private static final String VIRGO_MIRROR_GROUP_ID = "org.eclipse.virgo.mirrored";
 
-    // TODO change to spring.io / pivotal.io
-    private static final String EBR_EXTERNAL_MAVEN_URL = "http://repository.springsource.com/maven/bundles/external";
-
     private static final String SPRINGFRAMEWORK_VERSION = "4.2.1.RELEASE";
 
     @Inject
     private BundleContext bundleContext;
-
-    protected static Option provisionExternalBundle(String groupId, String artifactId, String version) {
-        return provision(bundle(mavenUrl(EBR_EXTERNAL_MAVEN_URL, groupId, artifactId, version)));
-    }
-    
-    private static String mavenUrl(String repositoryUrl, String groupId, String artifactId, String version) {
-        // Use Pax URL. See m
-        return "mvn:" + repositoryUrl + "!" + groupId + "/" + artifactId + "/" + version + "/" + "jar";
-    }
 
     protected static Option provisionSpringBundle(String artifactId) {
         return provision(bundle(provisionLocalMirrorBundle(artifactId, SPRINGFRAMEWORK_VERSION)));
