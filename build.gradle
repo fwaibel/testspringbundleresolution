@@ -2,21 +2,38 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 repositories {
-	mavenCentral()
-	ivy {
-		url "http://build.eclipse.org/rt/virgo/ivy/bundles/release/"
-		layout "pattern", { artifact "[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" }
-	}
+    mavenLocal()
+    mavenCentral()
+    ivy {
+        url "http://build.eclipse.org/rt/virgo/ivy/bundles/release/"
+        layout "pattern", { artifact "[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" }
+    }
 }
 
 dependencies {
-    testCompile "junit:junit:4.+",
-                "org.ops4j.pax.exam:pax-exam-junit4:$paxExamJunit4Version",
-                "org.eclipse.osgi:org.eclipse.osgi:$equinoxVersion",
-		        group: "org.eclipse.virgo.mirrored", name: "org.eclipse.osgi", version: equinoxVersion, configuration: "compile", ext: "jar",
-                "javax.inject:javax.inject:1"
+    testCompile "junit:junit:4.12"
+    testCompile "org.ops4j.pax.exam:pax-exam-junit4:$paxExamJunit4Version"
+    testCompile "org.eclipse.osgi:org.eclipse.osgi:$equinoxVersion"
+    testCompile group: "org.eclipse.tycho", name: "org.eclipse.osgi", version: equinoxVersion, configuration: "compile", ext: "jar"
+//    testCompile group: "org.eclipse.virgo.mirrored", name: "org.eclipse.osgi", version: equinoxVersion, configuration: "compile", ext: "jar"
+    testCompile group: "org.eclipse.virgo.mirrored", name: "javax.inject", version: "1.0.0.v20091030", configuration: "compile", ext: "jar"
 
-    testRuntime "org.ops4j.pax.exam:pax-exam-container-native:$paxExamContainerNativeVersion",
-                "org.ops4j.pax.exam:pax-exam-link-mvn:$paxExamLinkMvnVersion",
-                "org.ops4j.pax.url:pax-url-aether:$paxUrlAetherVersion"
+    testRuntime group: "org.eclipse.virgo.mirrored", name: "javax.servlet", version: "3.1.0.20150414", configuration: "compile", ext: "jar"
+    testRuntime group: "org.eclipse.virgo.mirrored", name: "org.springframework.core", version: "4.2.1.RELEASE", configuration: "compile", ext: "jar"
+    testRuntime group: "org.eclipse.virgo.mirrored", name: "org.springframework.jms", version: "4.2.1.RELEASE", configuration: "compile", ext: "jar"
+
+    // mandatory dependencies for o.s.core
+    testRuntime group: "org.eclipse.virgo.mirrored", name: "org.apache.commons.logging", version: "1.2.0", configuration: "compile", ext: "jar"
+    testRuntime group: "org.eclipse.virgo.mirrored", name: "org.apache.commons.codec", version: "1.10.0", configuration: "compile", ext: "jar"
+
+    // mandatory dependencies for o.s.jms
+    testRuntime group: "org.eclipse.virgo.mirrored", name: "javax.jms", version: "1.1.0.v201205091237", configuration: "compile", ext: "jar"
+
+    testRuntime "org.ops4j.pax.exam:pax-exam-container-native:$paxExamContainerNativeVersion"
+    testRuntime "org.ops4j.pax.exam:pax-exam-link-mvn:$paxExamLinkMvnVersion"
+    testRuntime "org.ops4j.pax.url:pax-url-aether:$paxUrlAetherVersion"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.8'
 }
