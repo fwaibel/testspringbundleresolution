@@ -25,12 +25,12 @@ public class SpringFrameworkExpressionResolutionTest extends AbstractSpringBundl
     @Configuration
     public static Option[] configuration() throws Exception {
         return options(//
-            provisionSpringBundle("org.springframework.core"), //
-            provisionSpringBundle("org.springframework.expression"), //
+            provisionMirroredGradleBundle("org.springframework.core"), //
+            provisionMirroredGradleBundle("org.springframework.expression"), //
 
-        // mandatory dependencies for o.s.core
-            provisionMirroredBundle("org.apache.commons.logging", "1.2.0"), //
-            provisionMirroredBundle("org.apache.commons.codec", "1.10.0"), //
+        // mandatory dependencies common to multiple Spring bundles
+            provisionMirroredGradleBundle("org.apache.commons.logging"), //
+            provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         junitBundles());
     }

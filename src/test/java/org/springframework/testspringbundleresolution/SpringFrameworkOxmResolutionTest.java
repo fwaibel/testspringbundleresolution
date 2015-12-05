@@ -25,13 +25,13 @@ public class SpringFrameworkOxmResolutionTest extends AbstractSpringBundleResolu
     @Configuration
     public static Option[] configuration() throws Exception {
         return options(//
-            provisionSpringBundle("org.springframework.beans"), //
-            provisionSpringBundle("org.springframework.core"), //
-            provisionSpringBundle("org.springframework.oxm"), //
+            provisionMirroredGradleBundle("org.springframework.beans"), //
+            provisionMirroredGradleBundle("org.springframework.core"), //
+            provisionMirroredGradleBundle("org.springframework.oxm"), //
 
-        // mandatory dependencies for o.s.core
-            provisionMirroredBundle("org.apache.commons.logging", "1.2.0"), //
-            provisionMirroredBundle("org.apache.commons.codec", "1.10.0"), //
+        // mandatory dependencies common to multiple Spring bundles
+            provisionMirroredGradleBundle("org.apache.commons.logging"), //
+            provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         junitBundles());
     }

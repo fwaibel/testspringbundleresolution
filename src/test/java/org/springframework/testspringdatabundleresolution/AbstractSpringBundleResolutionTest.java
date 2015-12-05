@@ -11,12 +11,13 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.springframework.testspringbundleresolution;
+package org.springframework.testspringdatabundleresolution;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.ops4j.pax.exam.CoreOptions.bundle;
 import static org.ops4j.pax.exam.CoreOptions.provision;
+import static org.osgi.framework.Bundle.ACTIVE;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -127,15 +128,15 @@ public abstract class AbstractSpringBundleResolutionTest {
         return repositoryUrl + "/" + groupId.replaceAll("\\.", "/") + "/" + artifactId + "/" + version + "/" + artifactId + "-" + version + ".jar";
     }
 
-    public void assertSpringBundleIsActive(String springBundleName) {
+    public void assertBundleIsActive(String bundleName) {
         boolean found = false;
         Bundle[] bundles = this.bundleContext.getBundles();
         for (Bundle bundle : bundles) {
             String symbolicName = bundle.getSymbolicName();
-            if (symbolicName.startsWith(springBundleName)) {
+            if (symbolicName.startsWith(bundleName)) {
                 System.out.println("Found Spring bundle '" + bundle.getSymbolicName() + "' with version: '" + bundle.getVersion() + "'.");
                 found = true;
-                if (Bundle.ACTIVE != bundle.getState()) {
+                if (ACTIVE != bundle.getState()) {
                     try {
                         LOG.error("Bundle found, but not active. Triggering start to get more information...");
                         bundle.start();
@@ -143,9 +144,9 @@ public abstract class AbstractSpringBundleResolutionTest {
                         LOG.error("Error during start was:", e);
                     }
                 }
-                assertEquals(symbolicName + " is not ACTIVE", Bundle.ACTIVE, bundle.getState());
+                assertEquals(symbolicName + " is not ACTIVE", ACTIVE, bundle.getState());
             }
         }
-        assertTrue("Spring Framework bundle not found", found);
+        assertTrue("Bundle '" + bundleName+ "' not found", found);
     }
 }

@@ -11,32 +11,44 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.springframework.testspringbundleresolution;
+package org.springframework.testspringdatabundleresolution;
 
 import static org.ops4j.pax.exam.CoreOptions.junitBundles;
+import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.CoreOptions.options;
+import static org.ops4j.pax.exam.CoreOptions.provision;
 
 import org.junit.Test;
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 
-public class SpringFrameworkBeansResolutionTest extends AbstractSpringBundleResolutionTest {
+public class SpringDataCommonsResolutionTest extends AbstractSpringBundleResolutionTest {
 
     @Configuration
     public static Option[] configuration() throws Exception {
         return options(//
+            provisionMirroredGradleBundle("org.springframework.aop"), //
             provisionMirroredGradleBundle("org.springframework.beans"), //
             provisionMirroredGradleBundle("org.springframework.core"), //
 
-        // mandatory dependencies for o.s.core
+        // mandatory dependencies common to multiple Spring bundles
             provisionMirroredGradleBundle("org.apache.commons.logging"), //
             provisionMirroredGradleBundle("org.apache.commons.codec"), //
+
+        // mandatory dependencies for o.s.aop
+            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
+
+            provision(mavenBundle("org.springframework.data", "spring-data-commons", "1.11.1.RELEASE")),
 
         junitBundles());
     }
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.beans");
+        assertBundleIsActive("org.springframework.core");
+        assertBundleIsActive("org.springframework.beans");
+        assertBundleIsActive("org.springframework.aop");
+
+        assertBundleIsActive("org.springframework.data.core");
     }
 }

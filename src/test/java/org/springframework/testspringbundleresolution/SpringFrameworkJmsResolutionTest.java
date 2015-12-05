@@ -25,27 +25,26 @@ public class SpringFrameworkJmsResolutionTest extends AbstractSpringBundleResolu
     @Configuration
     public static Option[] configuration() throws Exception {
         return options(//
-            
-            provisionSpringBundle("org.springframework.aop"), //
-            provisionSpringBundle("org.springframework.beans"), //
-            provisionSpringBundle("org.springframework.context"), //
-            provisionSpringBundle("org.springframework.core"), //
-            provisionSpringBundle("org.springframework.expression"), //
-            provisionSpringBundle("org.springframework.jms"), //
-            provisionSpringBundle("org.springframework.messaging"), //
-            provisionSpringBundle("org.springframework.oxm"), //
-            provisionSpringBundle("org.springframework.transaction"), //
 
-        // mandatory dependencies for o.s.core
-            provisionMirroredBundle("org.apache.commons.logging", "1.2.0"), //
-            provisionMirroredBundle("org.apache.commons.codec", "1.10.0"), //
+        provisionMirroredGradleBundle("org.springframework.aop"), //
+            provisionMirroredGradleBundle("org.springframework.beans"), //
+            provisionMirroredGradleBundle("org.springframework.context"), //
+            provisionMirroredGradleBundle("org.springframework.core"), //
+            provisionMirroredGradleBundle("org.springframework.expression"), //
+            provisionMirroredGradleBundle("org.springframework.jms"), //
+            provisionMirroredGradleBundle("org.springframework.messaging"), //
+            provisionMirroredGradleBundle("org.springframework.oxm"), //
+            provisionMirroredGradleBundle("org.springframework.transaction"), //
 
-            // mandatory dependencies for o.s.aop
-            provisionMirroredBundle("org.aopalliance.aop", "1.0.0"), //
-            
+        // mandatory dependencies common to multiple Spring bundles
+            provisionMirroredGradleBundle("org.apache.commons.logging"), //
+            provisionMirroredGradleBundle("org.apache.commons.codec"), //
+
+        // mandatory dependencies for o.s.aop
+            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
+
         // mandatory dependencies for o.s.jms
-// mvn install:install-file -Dfile=javax.jms_1.1.0.v201205091237.jar -DgroupId=org.eclipse.virgo.mirror -DartifactId=javax.jms -Dversion=1.1.0.v201205091237 -Dpackaging=jar
-            provisionMirroredBundle("javax.jms", "1.1.0.v201205091237"), //
+            provisionMirroredGradleBundle("javax.jms"), //
 
         junitBundles());
     }

@@ -25,11 +25,11 @@ public class SpringFrameworkCoreResolutionTest extends AbstractSpringBundleResol
     @Configuration
     public static Option[] configuration() throws Exception {
         return options(//
-            provisionSpringBundle("org.springframework.core"), //
+            provisionMirroredGradleBundle("org.springframework.core"), //
 
         // mandatory dependencies common to multiple Spring bundles
-            provisionMirroredBundle("org.apache.commons.logging", "1.2.0"), //
-            provisionMirroredBundle("org.apache.commons.codec", "1.10.0"), //
+            provisionMirroredGradleBundle("org.apache.commons.logging"), //
+            provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         junitBundles());
     }

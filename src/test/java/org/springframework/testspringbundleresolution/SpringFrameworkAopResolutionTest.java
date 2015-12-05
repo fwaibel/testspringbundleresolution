@@ -25,16 +25,16 @@ public class SpringFrameworkAopResolutionTest extends AbstractSpringBundleResolu
     @Configuration
     public static Option[] configuration() throws Exception {
         return options(//
-            provisionSpringBundle("org.springframework.aop"), //
-            provisionSpringBundle("org.springframework.beans"), //
-            provisionSpringBundle("org.springframework.core"), //
+            provisionMirroredGradleBundle("org.springframework.aop"), //
+            provisionMirroredGradleBundle("org.springframework.beans"), //
+            provisionMirroredGradleBundle("org.springframework.core"), //
 
         // mandatory dependencies common to multiple Spring bundles
-            provisionMirroredBundle("org.apache.commons.logging", "1.2.0"), //
-            provisionMirroredBundle("org.apache.commons.codec", "1.10.0"), //
+            provisionMirroredGradleBundle("org.apache.commons.logging"), //
+            provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         // mandatory dependencies for o.s.aop
-            provisionMirroredBundle("org.aopalliance.aop", "1.0.0"), //
+            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
 
         junitBundles());
     }

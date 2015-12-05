@@ -25,20 +25,20 @@ public class SpringFrameworkMessagingResolutionTest extends AbstractSpringBundle
     @Configuration
     public static Option[] configuration() throws Exception {
         return options(//
-            provisionSpringBundle("org.springframework.aop"), //
-            provisionSpringBundle("org.springframework.beans"), //
-            provisionSpringBundle("org.springframework.context"), //
-            provisionSpringBundle("org.springframework.core"), //
-            provisionSpringBundle("org.springframework.expression"), //
-            provisionSpringBundle("org.springframework.messaging"), //
-            provisionSpringBundle("org.springframework.oxm"), //
+            provisionMirroredGradleBundle("org.springframework.aop"), //
+            provisionMirroredGradleBundle("org.springframework.beans"), //
+            provisionMirroredGradleBundle("org.springframework.context"), //
+            provisionMirroredGradleBundle("org.springframework.core"), //
+            provisionMirroredGradleBundle("org.springframework.expression"), //
+            provisionMirroredGradleBundle("org.springframework.messaging"), //
+            provisionMirroredGradleBundle("org.springframework.oxm"), //
 
-        // mandatory dependencies for o.s.core
-            provisionMirroredBundle("org.apache.commons.logging", "1.2.0"), //
-            provisionMirroredBundle("org.apache.commons.codec", "1.10.0"), //
+        // mandatory dependencies common to multiple Spring bundles
+            provisionMirroredGradleBundle("org.apache.commons.logging"), //
+            provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         // mandatory dependencies for o.s.aop
-            provisionMirroredBundle("org.aopalliance.aop", "1.0.0"), //
+            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
 
         junitBundles());
     }
