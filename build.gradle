@@ -62,4 +62,4 @@ dependencies {
     testRuntime "org.ops4j.pax.url:pax-url-aether:$paxUrlAetherVersion"
 }
 
-task wrapper(type: Wrapper) { gradleVersion = '2.8' }
+task wrapper(type: Wrapper) { gradleVersion = '2.13' }
