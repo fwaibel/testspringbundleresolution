@@ -21,6 +21,7 @@ import static org.ops4j.pax.exam.CoreOptions.provision;
 import org.junit.Test;
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
+import org.springframework.testspringbundleresolution.AbstractSpringBundleResolutionTest;
 
 public class SpringDataCommonsResolutionTest extends AbstractSpringBundleResolutionTest {
 
@@ -36,7 +37,7 @@ public class SpringDataCommonsResolutionTest extends AbstractSpringBundleResolut
             provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         // mandatory dependencies for o.s.aop
-            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
+            provisionMirroredGradleBundle("oevm.org.aopalliance"), //
 
             provision(mavenBundle("org.springframework.data", "spring-data-commons", "1.11.1.RELEASE")),
 

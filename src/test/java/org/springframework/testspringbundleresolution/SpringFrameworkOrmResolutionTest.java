@@ -38,13 +38,13 @@ public class SpringFrameworkOrmResolutionTest extends AbstractSpringBundleResolu
             provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         // mandatory dependencies for o.s.aop
-            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
+            provisionMirroredGradleBundle("oevm.org.aopalliance"), //
 
         junitBundles());
     }
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.orm");
+        assertBundleIsActive("org.springframework.orm");
     }
 }

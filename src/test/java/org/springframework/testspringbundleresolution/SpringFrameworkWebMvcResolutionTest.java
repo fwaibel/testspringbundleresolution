@@ -40,7 +40,7 @@ public class SpringFrameworkWebMvcResolutionTest extends AbstractSpringBundleRes
             provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         // mandatory dependencies for o.s.aop
-            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
+            provisionMirroredGradleBundle("oevm.org.aopalliance"), //
 
         // mandatory dependencies for o.s.web
             provisionMirroredGradleBundle("javax.servlet"), //
@@ -50,6 +50,6 @@ public class SpringFrameworkWebMvcResolutionTest extends AbstractSpringBundleRes
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.webmvc");
+        assertBundleIsActive("org.springframework.webmvc");
     }
 }

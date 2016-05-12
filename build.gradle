@@ -8,22 +8,16 @@ repositories {
         url "http://build.eclipse.org/rt/virgo/ivy/bundles/release/"
         layout "pattern", { artifact "[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" }
     }
-    // TODO - remove once all bundles are available via Virgo mirror or maven central
-    ivy {
-        url "http://repository.springsource.com/ivy/bundles/external/"
-        layout "pattern", { artifact "[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" }
-    }
 }
 
 dependencies {
-    testCompile "junit:junit:4.12"
+    testCompile "junit:junit:${junitVersion}"
     testCompile "org.ops4j.pax.exam:pax-exam-junit4:$paxExamJunit4Version"
-    testCompile group: "org.eclipse.tycho", name: "org.eclipse.osgi", version: equinoxVersion, configuration: "compile", ext: "jar"
+    testCompile group: "org.eclipse.virgo.mirrored", name: "org.eclipse.osgi", version: equinoxVersion, configuration: "compile", ext: "jar"
     testCompile group: "org.eclipse.virgo.mirrored", name: "javax.inject", version: javaxInjectVersion, configuration: "compile", ext: "jar"
 
     testRuntime group: "org.eclipse.virgo.mirrored", name: "javax.servlet", version: javaxServletVersion, configuration: "compile", ext: "jar"
-    // TODO - replace once uploaded to Virgo mirror
-    testRuntime group: "javax.portlet", name: "com.springsource.javax.portlet", version: '2.0.0.v20110525', configuration: "compile", ext: "jar"
+    testRuntime group: "org.eclipse.virgo.mirrored", name: "javax.portlet", version: javaxPortletVersion, configuration: "compile", ext: "jar"
 
     testRuntime group: "org.eclipse.virgo.mirrored", name: "org.springframework.aop", version: springframeworkVersion, ext: "jar"
     testRuntime group: "org.eclipse.virgo.mirrored", name: "org.springframework.beans", version: springframeworkVersion, ext: "jar"
@@ -47,9 +41,7 @@ dependencies {
     testRuntime group: "org.eclipse.virgo.mirrored", name: "org.apache.commons.codec", version: commonsCodecVersion, ext: "jar"
 
     // mandatory dependencies for o.s.aop
-    // TODO - replace once available on Virgo mirror
-    testRuntime group: "org.aopalliance", name: "com.springsource.org.aopalliance", version: '1.0.0', configuration: "compile", ext: "jar"
-    //    testRuntime group: "org.eclipse.virgo.mirrored", name: "org.aopalliance.aop", version: '1.0.0', configuration: "compile", ext: "jar"
+    testRuntime group: "org.eclipse.virgo.mirrored", name: "oevm.org.aopalliance", version: '1.0.0', ext: "jar"
 
     // mandatory dependencies for o.s.jms
     testRuntime group: "org.eclipse.virgo.mirrored", name: "javax.jms", version: javaxJmsVersion, configuration: "compile", ext: "jar"

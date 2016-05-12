@@ -21,6 +21,7 @@ import static org.ops4j.pax.exam.CoreOptions.provision;
 import org.junit.Test;
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
+import org.springframework.testspringbundleresolution.AbstractSpringBundleResolutionTest;
 
 public class SpringDataMongoDbResolutionTest extends AbstractSpringBundleResolutionTest {
 
@@ -39,7 +40,7 @@ public class SpringDataMongoDbResolutionTest extends AbstractSpringBundleResolut
             provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         // mandatory dependencies for o.s.aop
-            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
+            provisionMirroredGradleBundle("oevm.org.aopalliance"), //
 
         // mandatory dependencies for o.s.data.mongodb
             provision(mavenBundle("com.fasterxml.jackson.core", "jackson-core", "2.6.3")),

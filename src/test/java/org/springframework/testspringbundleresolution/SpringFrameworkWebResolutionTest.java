@@ -37,7 +37,7 @@ public class SpringFrameworkWebResolutionTest extends AbstractSpringBundleResolu
             provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         // mandatory dependencies for o.s.aop
-            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
+            provisionMirroredGradleBundle("oevm.org.aopalliance"), //
 
         // mandatory dependencies for o.s.web
             provisionMirroredGradleBundle("javax.servlet"), //
@@ -47,6 +47,6 @@ public class SpringFrameworkWebResolutionTest extends AbstractSpringBundleResolu
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.web");
+        assertBundleIsActive("org.springframework.web");
     }
 }

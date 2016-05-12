@@ -38,13 +38,13 @@ public class SpringFrameworkContextSupportResolutionTest extends AbstractSpringB
             provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         // mandatory dependencies for o.s.aop
-            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
+            provisionMirroredGradleBundle("oevm.org.aopalliance"), //
 
         junitBundles());
     }
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.context.support");
+        assertBundleIsActive("org.springframework.context.support");
     }
 }

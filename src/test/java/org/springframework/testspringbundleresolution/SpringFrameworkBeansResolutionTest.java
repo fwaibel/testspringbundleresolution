@@ -37,6 +37,6 @@ public class SpringFrameworkBeansResolutionTest extends AbstractSpringBundleReso
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.beans");
+        assertBundleIsActive("org.springframework.beans");
     }
 }

@@ -43,7 +43,7 @@ public class SpringFrameworkWebsocketResolutionTest extends AbstractSpringBundle
             provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         // mandatory dependencies for o.s.aop
-            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
+            provisionMirroredGradleBundle("oevm.org.aopalliance"), //
 
         // mandatory dependencies for o.s.web
             provisionMirroredGradleBundle("javax.servlet"), //
@@ -56,10 +56,10 @@ public class SpringFrameworkWebsocketResolutionTest extends AbstractSpringBundle
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.context.support");
-        assertSpringBundleIsActive("org.springframework.webmvc");
-        assertSpringBundleIsActive("org.springframework.messaging");
-        assertSpringBundleIsActive("org.springframework.context");
-        assertSpringBundleIsActive("org.springframework.websocket");
+        assertBundleIsActive("org.springframework.context.support");
+        assertBundleIsActive("org.springframework.webmvc");
+        assertBundleIsActive("org.springframework.messaging");
+        assertBundleIsActive("org.springframework.context");
+        assertBundleIsActive("org.springframework.websocket");
     }
 }

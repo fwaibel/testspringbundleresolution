@@ -41,7 +41,7 @@ public class SpringFrameworkJmsResolutionTest extends AbstractSpringBundleResolu
             provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         // mandatory dependencies for o.s.aop
-            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
+            provisionMirroredGradleBundle("oevm.org.aopalliance"), //
 
         // mandatory dependencies for o.s.jms
             provisionMirroredGradleBundle("javax.jms"), //
@@ -51,6 +51,6 @@ public class SpringFrameworkJmsResolutionTest extends AbstractSpringBundleResolu
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.jms");
+        assertBundleIsActive("org.springframework.jms");
     }
 }

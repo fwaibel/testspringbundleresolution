@@ -36,6 +36,6 @@ public class SpringFrameworkCoreResolutionTest extends AbstractSpringBundleResol
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.core");
+        assertBundleIsActive("org.springframework.core");
     }
 }

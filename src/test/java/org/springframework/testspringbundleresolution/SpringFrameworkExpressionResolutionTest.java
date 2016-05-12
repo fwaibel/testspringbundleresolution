@@ -37,6 +37,6 @@ public class SpringFrameworkExpressionResolutionTest extends AbstractSpringBundl
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.expression");
+        assertBundleIsActive("org.springframework.expression");
     }
 }

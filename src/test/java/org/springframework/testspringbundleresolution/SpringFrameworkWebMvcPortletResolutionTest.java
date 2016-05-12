@@ -41,7 +41,7 @@ public class SpringFrameworkWebMvcPortletResolutionTest extends AbstractSpringBu
             provisionMirroredGradleBundle("org.apache.commons.codec"), //
 
         // mandatory dependencies for o.s.aop
-            provisionGradleBundle("org.aopalliance", "com.springsource.org.aopalliance"), //
+            provisionMirroredGradleBundle("oevm.org.aopalliance"), //
 
         // mandatory dependencies for o.s.web
             provisionMirroredGradleBundle("javax.servlet"), //
@@ -54,6 +54,6 @@ public class SpringFrameworkWebMvcPortletResolutionTest extends AbstractSpringBu
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.webmvc.portlet");
+        assertBundleIsActive("org.springframework.webmvc.portlet");
     }
 }

@@ -38,6 +38,6 @@ public class SpringFrameworkOxmResolutionTest extends AbstractSpringBundleResolu
 
     @Test
     public void springBundleShouldBeActive() throws Exception {
-        assertSpringBundleIsActive("org.springframework.oxm");
+        assertBundleIsActive("org.springframework.oxm");
     }
 }
